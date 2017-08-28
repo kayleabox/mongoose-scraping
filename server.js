@@ -33,8 +33,8 @@ app.use("/", routes);
 
 
 // configure with mongoose
-mongoose.connect("mongodb://localhost/hw14");
-//mongodb://heroku_v2bd8wm8:6cio4u2cgakbm9gehu0ddng0sa@ds159493.mlab.com:59493/heroku_v2bd8wm8
+mongoose.connect("mongodb://heroku_v2bd8wm8:6cio4u2cgakbm9gehu0ddng0sa@ds159493.mlab.com:59493/heroku_v2bd8wm8")
+//mongoose.connect("mongodb://localhost/hw14");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
