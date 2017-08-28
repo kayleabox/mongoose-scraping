@@ -39,64 +39,6 @@ $(document).on("click", ".view-note", function() {
 });
 
 
-// $(document).on("click", ".savearticle", function() {
-//   var thisId = $(this).attr("data-id");
-//   var saved = $(this).attr("state");
-//   if(saved === "true"){
-//     console.log(saved)
-//     var newsaved = false;
-//   }
-//   else{
-//     var newsaved = true;
-//   }
-
-//   console.log(newsaved)
-//   $.ajax({
-//     method: "PUT",
-//     url: "/save/" + thisId,
-//     data: {
-//       saved: newsaved
-//     }
-//   }).done(function (data) {
-//     console.log("saving")
-//     console.log(data);
-
-//     if(!data.saved){
-//       $("#"+data._id).html("<button class='savearticle btn-floating btn-small waves-effect waves-light right'"
-//       + "state='" + data.saved + "' data-id='" + data._id + "'><i class='material-icons'>add</i></button>");
-//     }
-//     else{
-//       $("#"+data._id).html("<button class='savearticle btn-floating btn-small waves-effect waves-light right red'"
-//       +"state='" + data.saved + "' data-id='" + data._id + "'><i class='material-icons'>remove</i></button>"
-//       + "<a class='view-note btn-floating btn-small waves-effect waves-light btn modal-trigger right' data-id='" + data._id 
-//       + "' href='#notes-modal'><i class='material-icons'>create</i></a>");
-//     }    
-
-//   });
-
-
-// });
-
-// $(document).on("click", "#savenote", function() {
-//   var thisId = $(this).attr("data-id");
-
-//   $.ajax({
-//     method: "POST",
-//     url: "/articles/" + thisId,
-//     data: {
-//       title: $("#titleinput").val(),
-//       body: $("#bodyinput").val()
-//     }
-//   })
-//     .done(function(data) {
-//       console.log(data);
-//       $("#notes").empty();
-//     });
-
-//   $("#titleinput").val("");
-//   $("#bodyinput").val("");
-// });
-
 
 // $(document).on("click", "#deletenote", function() {
 //   var thisId = $(this).attr("data-id");
