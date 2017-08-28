@@ -163,6 +163,6 @@ db.once("open", function() {
 // });
 
 // Listen on port 3000
-app.listen(8080, function() {
-  console.log("App running on port 8080!");
+app.listen(process.env.PORT || 8080, function() {
+  console.log("App running!");
 });
