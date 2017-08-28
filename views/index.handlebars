@@ -1,0 +1,109 @@
+  <nav class="grey darken-1">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">News Scraper</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/saved">Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+  <div id="wrapper">
+    <h2>Articles</h2>
+    <div class="row">
+      <div class="col s12">
+        <div class="" id="articles"></div>
+      </div>
+
+              
+        <div class="row">
+          <article class="col s12">
+          <ul>
+            {{#each article}} {{#unless this.saved}}
+            <li>
+              <div class='card row grey lighten-2'>
+                <div class='col s8'><p><a data-id='{{ this._id }}' state='{{this.saved}}' 
+                  href='https://www.cnn.com{{this.link}}' target='_blank'> {{this.title}} </a></p></div> 
+                <div id='{{this._id}}' class='col s4'>
+                  {{> articles/btnNotSaved}}
+
+                </div>
+              </div>
+
+            </li>
+            {{/unless}}
+            {{#if this.saved}}
+            {{#unless this.note}}
+            <li>
+            <div class='card row teal lighten-5'>
+              <div class='col s8'>
+                <p><a data-id='{{this._id}}' state='{{this.saved}}' href='https://www.cnn.com{{this.link}}' target='_blank'> {{this.title}} </a></p>
+              </div>
+              <div id='{{this._id}}' class='col s4'>
+                {{> articles/btnAddNote}} {{> articles/delete}}
+     
+                </div>
+            </div>
+            </li>
+            {{/unless}}
+            {{#if this.note}}
+              <li class="row">
+                
+                <ul class="collapsible popout" data-collapsible="accordion">
+                <li class="card teal lighten-5 col s12">
+                  <div class="collapsible-header teal lighten-5">
+                    <div class='col s8'>
+                      <p><a data-id='{{this._id}}' state='{{this.saved}}' href='https://www.cnn.com{{this.link}}' target='_blank'> {{this.title}} </a></p>
+                    </div>
+                    <div id='{{this._id}}' class='col s4'>
+                      {{> articles/btnAddNote}} {{> articles/delete}}
+
+                    </div>
+                  </div>
+                <div class="collapsible-body">
+                  
+                  <span>
+                    <h5>{{this.note.title}} {{> notes/btnDelete}}</h5>
+                    <p>{{this.note.body}}</p>
+                  </span>
+          
+                </div>
+
+                </li>
+                </ul>
+                
+              </li>
+       
+            {{/if}}
+
+          
+
+            {{/if}} {{/each}}
+          </ul>
+
+        </article>
+        <div>
+
+          <!-- Modal Structure -->
+          <div id="notes-modal" class="modal">
+            <div class="modal-content">
+              <div class="row card" id="add-note">
+                <h5><a id="article-title" class="col s12" href="#" ></a></h5>
+                  <form class="col12 center" id="save-note" action="/articles/" method="POST">
+                    <input class="input-field center" id="titleinput" name="title" placeholder="Title" >
+                    <textarea class="input-field materialize-textarea center" id="bodyinput" name="body" placeholder="Note"></textarea>
+                    {{> notes/btnSave}}
+                  </form>
+              </div>
+            </div>
+            <div id="edit-notes" class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
